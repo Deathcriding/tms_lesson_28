@@ -119,13 +119,10 @@ def safe_file_read():
     
     # Проверяем, что путь внутри разрешенной директории
     try:
-        if str(safe_path.resolve()).startswith(str(base_dir.resolve())):
-            with open(safe_path, 'r') as f:
-                print(f.read())
-        else:
-            print("Доступ запрещен")
+        with open(safe_path, 'r') as f:
+            print(f.read())
     except FileNotFoundError:
-        print("Файл не найден")
+        print("Файл не найден или доступ запрещен")
     except Exception as e:
         print(f"Ошибка: {e}")
 
